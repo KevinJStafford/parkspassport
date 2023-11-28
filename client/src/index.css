@@ -4,4 +4,13 @@
   --link: #61dafb;
   --text: hsla(0, 0%, 100%, 0.88);
 }
+img {
+  width: 900px;
+  height: 500px;
+}
 
+.landing-card {
+  font-family: IBM Plexsans;
+  color: #D7D7A8;
+  text-align: center;
+}
