@@ -3,7 +3,7 @@
 # Standard library imports
 
 # Remote library imports
-from models import Park
+from models import Park, Amenity, Neighborhood
 from flask_migrate import Migrate
 from flask import Flask,request, make_response
 from flask_restful import Resource, Api
@@ -20,9 +20,26 @@ class Parks(Resource):
         return make_response(parks, 200)
     
     def post(self):
-        pass
+        params = request.json
+        try:
+            park = Park(name = params['name'], location = params['location'])
+        except:
+            return make_response({'errors': 'Try Again'}, 422)
+        db.session.add(park)
+        db.session.commit()
+        return make_response(park.to_dict(), 201)
 
 api.add_resource(Parks, '/parks')
+
+class AmenitiesById(Resource):
+    def patch(self, id):
+        amenity = Amenity.query.get(id)
+        if not amenity:
+            return make_response({'error': 'Amenity not found!'}, 404)
+        params = request.json
+        try:
+            for attr in params:
+                
 
 
 
