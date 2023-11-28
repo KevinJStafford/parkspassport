@@ -14,6 +14,13 @@ from config import app, db, api
 # Add your model imports
 
 
+class ParksInNeighborhood(Resource):
+    def get(self):
+        parks_in_neigborhood = [park.to_dict() for park in Park.query.all().neighborhood]
+        return make_response(parks_in_neigborhood, 200)
+    
+api.add_resource(ParksInNeighborhood, 'neighborhoods/<int:id>/parks')
+    
 class Parks(Resource):
     def get(self):
         parks = [park.to_dict() for park in Park.query.all()]
@@ -31,15 +38,32 @@ class Parks(Resource):
 
 api.add_resource(Parks, '/parks')
 
-class AmenitiesById(Resource):
+class ParkAmenities(Resource):
     def patch(self, id):
-        amenity = Amenity.query.get(id)
-        if not amenity:
+        park_amenity = Park.query.get(id).amenity_items
+        if not park_amenity:
             return make_response({'error': 'Amenity not found!'}, 404)
         params = request.json
         try:
             for attr in params:
-                
+                setattr(park_amenity, attr, params[attr])
+        except: 
+            return make_response({'error': 'Try Again!'}, 422)
+        db.session.commit()
+        return make_response(park_amenity.to_dict(), 200)
+    
+api.add_resource(ParkAmenities, '/parks/<int:id>/amenities')
+
+class ParksById(Resource):
+    def delete(self, id):
+        park = Park.query.get(id)
+        if not park:
+            return make_response({'error': 'Park not found!'}, 404)
+        db.session.delete(park)
+        db.session.commit()
+        return make_response('', 204)
+    
+api.add_resource(ParksById, '/parks/<int:id>')
 
 
 
