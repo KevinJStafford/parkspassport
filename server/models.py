@@ -8,5 +8,3 @@ class Neighborhood(db.Model, SerializerMixin):
 
     id = db.Column(db.Integer, primary_key = True)
     name = db.Column(db.String)
-
-
