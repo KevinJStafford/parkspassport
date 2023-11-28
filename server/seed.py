@@ -8,7 +8,7 @@ from faker import Faker
 
 # Local imports
 from app import app
-from models import db, Park, Neighborhood
+from models import db, Park, Neighborhood, Amenity
 
 
 with app.app_context():
@@ -32,14 +32,23 @@ with app.app_context():
     n3 = Neighborhood(name = "Brighton")
     n4 = Neighborhood(name = "Charles Town")
     n5 = Neighborhood(name = "Urbana")
-    neighborhoods = [n1, n2, n3, n4, n5]
+    n6 = Neighborhood(name = "Bay Ridge")
+    neighborhoods = [n1, n2, n3, n4, n5, n6]
 
 
-    print("Creating amenities...no amenities yet")
-    # insert amenities seed here
+    print("Creating amenities...")
+    a1 = Amenity(amenity_items = "basketball court", park = p1, neighborhood = n4)
+    a2 = Amenity(amenity_items = "dog park", park = p4, neighborhood = n5)
+    a3 = Amenity(amenity_items = "hiking", park = p2, neighborhood = n2)
+    a4 = Amenity(amenity_items = "campground", park = p3, neighborhood = n3)
+    a5 = Amenity(amenity_items = "playground", park = p5, neighborhood = n1)
+    a6 = Amenity(amenity_items = "bike trail", park = p6, neighborhood = n6)
+    amenities = [a1, a2, a3, a4, a5, a6]
+
 
     db.session.add_all(parks)
     db.session.add_all(neighborhoods)
+    db.session.add_all(amenities)
     db.session.commit()
 
 
