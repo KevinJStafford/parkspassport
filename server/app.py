@@ -19,7 +19,13 @@ class Parks(Resource):
         parks = [park.to_dict() for park in Park.query.all()]
         return make_response(parks, 200)
     
+    def post(self):
+        parmas
+
 api.add_resource(Parks, '/parks')
+
+
+
 
 
 @app.route('/')
