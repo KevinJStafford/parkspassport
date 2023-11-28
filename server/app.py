@@ -14,7 +14,19 @@ from config import app, db, api
 # Add your model imports
 
 
-# Views go here!
+class Parks(Resource):
+    def get(self):
+        parks = [park.to_dict() for park in Park.query.all()]
+        return make_response(parks, 200)
+    
+    def post(self):
+        pass
+
+api.add_resource(Parks, '/parks')
+
+
+
+
 
 @app.route('/')
 def index():
