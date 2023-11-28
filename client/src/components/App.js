@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { Switch, Route } from "react-router-dom";
+import LandingGrid from './LandingGrid'
 
 function App() {
-  return <h1>Parks Passport</h1>;
+  return <LandingGrid />;
 }
 
 export default App;
