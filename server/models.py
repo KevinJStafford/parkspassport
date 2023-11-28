@@ -64,7 +64,7 @@ class Amenity(db.Model, SerializerMixin):
     park = db.relationship('Park', back_populates = 'amenities')
     neighborhood = db.relationship('Neighborhood', back_populates = 'amenities')
 
-    @validates('amenity_list')
+    @validates('amenity_items')
     def check_amenity_items(self, key, new_amenity_items):
         if len(new_amenity_items) < 3:
             raise ValueError('Amenity must be longer than 3 characters!')
