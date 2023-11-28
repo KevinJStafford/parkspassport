@@ -20,7 +20,7 @@ class Parks(Resource):
         return make_response(parks, 200)
     
     def post(self):
-        parmas = 
+        pass
 
 api.add_resource(Parks, '/parks')
 
