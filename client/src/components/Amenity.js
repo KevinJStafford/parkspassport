@@ -24,14 +24,14 @@ function Amenities(){
           {amenities.map((amenity) => (
             <li key={amenity.id}>
               <span>
-                {amenity.name}
+                {amenity.amenity_items}
               </span>
               <Link to={`/amenities/${amenity.id}`}> View Amenity</Link>
             </li>
           ))}
         </ul>
         <hr />
-        <NewAmenity onAddAmenity={handleAddAmenity} />
+        {/* <NewAmenity onAddAmenity={handleAddAmenity} /> */}
       </div>
     )
 }
