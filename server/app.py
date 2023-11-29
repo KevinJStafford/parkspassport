@@ -111,8 +111,11 @@ class NeighborhoodAmenities(Resource):
         return make_response(neighborhood_amenities, 200)
 api.add_resource(NeighborhoodAmenities, "/neighborhoods/<int:id>/amenities")
 
-
-
+class Amenities(Resource):
+    def get(self):
+        amenities=[a.to_dict() for a in Amenity.query.all()]
+        return make_response(amenities, 200)
+api.add_resource(Amenities, '/amenities')
 
 
 @app.route('/')
