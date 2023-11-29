@@ -13,13 +13,12 @@ import os
 from config import app, db, api
 # Add your model imports
 
-
 class ParksInNeighborhood(Resource):
     def get(self):
         parks_in_neigborhood = [park.to_dict() for park in Park.query.all().neighborhood]
         return make_response(parks_in_neigborhood, 200)
     
-api.add_resource(ParksInNeighborhood, 'neighborhoods/<int:id>/parks')
+api.add_resource(ParksInNeighborhood, '/neighborhoods/<int:id>/parks')
     
 class Parks(Resource):
     def get(self):
@@ -65,7 +64,11 @@ class ParksById(Resource):
     
 api.add_resource(ParksById, '/parks/<int:id>')
 
-
+# class Neighborhood(Resource):
+#     def get(self):
+#         neighborhoods = [n.to_dict() for n in Neighborhood.query.all()]
+#         if not neighborhoods:
+#             make_repsonse
 
 
 
