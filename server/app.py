@@ -14,9 +14,13 @@ from config import app, db, api
 # Add your model imports
 
 class ParksInNeighborhood(Resource):
-    def get(self):
-        parks_in_neigborhood = [park.to_dict() for park in Park.query.all().neighborhood]
-        return make_response(parks_in_neigborhood, 200)
+    def get(self, id):
+        neighborhood_id = Neighborhood.query.get(id)
+        if not neighborhood_id:
+            return make_response({"Error": "No neighborhoods with that id."}, 404)
+        parks_in_neighborhood = neighborhood_id.parks
+        parks_data = [park.to_dict() for park in parks_in_neighborhood]
+        return make_response(parks_data, 200)
     
 api.add_resource(ParksInNeighborhood, '/neighborhoods/<int:id>/parks')
     
