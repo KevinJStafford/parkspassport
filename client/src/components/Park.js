@@ -1,11 +1,13 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router";
+import NewPark from './NewPark'
+import {Link} from "react-router-dom"
 
 function Parks(){
     const [parks, setParks] = useState([]);
   
     useEffect(() => {
-      fetch("/parks")
+      fetch("http://localhost:5555/parks")
         .then((r) => r.json())
         .then(setParks);
     }, []);
@@ -34,4 +36,3 @@ function Parks(){
   }
   
   export default Parks;
-}

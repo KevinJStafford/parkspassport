@@ -21,9 +21,9 @@ function NewPark({ onAddPark }) {
       if (r.ok) {
         r.json().then((park) => {
           setName("");
-          setAge("");
+          setLocation("");
           setErrors([]);
-          onAddCamper(park);
+          onAddPark(park);
         });
       } else {
         r.json().then((err) => setErrors(err.errors));
