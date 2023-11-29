@@ -54,7 +54,7 @@ class Neighborhood(db.Model, SerializerMixin):
 
 class Amenity(db.Model, SerializerMixin):
     __tablename__ = 'amenities'
-
+    serialize_rules = ("-neighborhood.amenities", "park.amenities")
     id = db.Column(db.Integer, primary_key = True)
     amenity_items = db.Column(db.String)
 

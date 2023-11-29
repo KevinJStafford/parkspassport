@@ -34,4 +34,3 @@ function Parks(){
   }
   
   export default Parks;
-}

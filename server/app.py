@@ -64,11 +64,50 @@ class ParksById(Resource):
     
 api.add_resource(ParksById, '/parks/<int:id>')
 
-# class Neighborhood(Resource):
-#     def get(self):
-#         neighborhoods = [n.to_dict() for n in Neighborhood.query.all()]
-#         if not neighborhoods:
-#             make_respsonse("Error" : )
+class Neighborhoods(Resource):
+    def get(self):
+        neighborhoods = [n.to_dict() for n in Neighborhood.query.all()]
+        if not neighborhoods:
+            return make_response({"Error" : "No neighborhoods found."}, 404)
+        else:
+            return make_response(neighborhoods, 200)
+    def post(self):
+        params = request.json
+        try:
+            new_neighborhood = Neighborhood(name = params["name"])
+        except:
+            return make_response({"Error": "Problem creating new neighborhood"}, 400)
+        db.session.add(new_neighborhood)
+        db.session.commit()
+        return make_response(new_neighborhood.to_dict(), 201)
+api.add_resource(Neighborhoods, "/neighborhoods")
+
+
+
+class NeighborhoodById(Resource):
+    def get(self, id):
+        neighborhood_id = Neighborhood.query.get(id)
+        if not neighborhood_id:
+            return make_response({"Error" : "No neighborhoods with that id"}, 404)
+        else:
+            return make_response(neighborhood_id.to_dict(), 200)
+    
+    def delete(self, id):
+        neighborhood_id = Neighborhood.query.get(id)
+        if not neighborhood_id:
+            return make_response({"Error": "No neighborhoods with that id"}, 404)
+        db.session.delete(neighborhood_id)
+        db.session.commit()
+        return make_response("", 204)
+api.add_resource(NeighborhoodById, "/neighborhoods/<int:id>")
+
+class NeighborhoodAmenities(Resource):
+    def get(self):
+        neighborhood_amenities = [n.to_dict() for n in Neighborhood.query.all().amenities]
+        return make_response(neighborhood_amenities, 200)
+api.add_resource(NeighborhoodAmenities, "/neighborhoods/<int:id>/amenities")
+
+
 
 
 
