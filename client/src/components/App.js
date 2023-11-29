@@ -4,6 +4,7 @@ import LandingGrid from './LandingGrid'
 import Navbar from './Navbar'
 import Parks from './Park'
 import Neighborhoods from './Neighborhood'
+import Amenities from './Amenity'
 
 function App() {
 
@@ -19,6 +20,9 @@ function App() {
       </Route>
       <Route exact path="/neighborhoods">
         <Neighborhoods/>
+      </Route>
+      <Route exact path="/amenities">
+        <Amenities />
       </Route>
       </Switch>
     </main>
