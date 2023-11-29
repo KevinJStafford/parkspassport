@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react";
-import { useParams } from "react-router";
-import NewPark from './NewPark'
-import {Link} from "react-router-dom"
+// import { useParams } from "react-router";
+import NewPark from './NewPark';
+import Navbar from './Navbar.js';
+import {Link} from "react-router-dom";
 
 function Parks(){
     const [parks, setParks] = useState([]);
@@ -18,6 +19,7 @@ function Parks(){
   
     return (
       <div>
+        <Navbar />
         <h2>Parks</h2>
         <ul>
           {parks.map((park) => (
@@ -25,7 +27,7 @@ function Parks(){
               <span>
                 {park.name}, Location {park.location}
               </span>
-              <Link to={`/parks/${park.id}`}>View Park</Link>
+              <Link to={`/parks/${park.id}`}> View Park</Link>
             </li>
           ))}
         </ul>

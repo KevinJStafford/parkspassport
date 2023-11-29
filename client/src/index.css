@@ -31,3 +31,11 @@ img {
   font-family: 'IBM Plex Sans', sans-serif !important;
   color: #D7D7A8 !important;
 }
+
+.normal-text {
+  text-decoration: none !important;
+}
+
+.normal-text :hover {
+  color: #2C7721 !important;
+}
