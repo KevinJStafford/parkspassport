@@ -4,7 +4,7 @@ import LandingGrid from './LandingGrid'
 import Navbar from './Navbar'
 import Parks from './Park'
 import Neighborhoods from './Neighborhood'
-import Amenities from './Amenity'
+import Amenities from "./Amenity"
 
 function App() {
 
@@ -30,3 +30,18 @@ function App() {
 }
 
 export default App;
+
+
+//App hierarchy
+
+// APP
+  // Navbar
+    // LandingGrid
+    // Amenity
+      //New Amenity
+    // Neighborhood
+      // New Neighborhood
+    // Park
+      // New Park
+      //Search
+      //
