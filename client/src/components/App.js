@@ -4,6 +4,7 @@ import LandingGrid from './LandingGrid'
 import Navbar from './Navbar'
 
 function App() {
+
   return (
     <div>
       <Navbar />
