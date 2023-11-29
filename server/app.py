@@ -68,7 +68,7 @@ api.add_resource(ParksById, '/parks/<int:id>')
 #     def get(self):
 #         neighborhoods = [n.to_dict() for n in Neighborhood.query.all()]
 #         if not neighborhoods:
-#             make_repsonse
+#             make_respsonse("Error" : )
 
 
 
