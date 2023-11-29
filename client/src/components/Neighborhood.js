@@ -1,6 +1,7 @@
 import React from "react";
 import {useEffect, useState} from "react"
 import {Link} from "react-router-dom"
+import Navbar from './Navbar.js'
 
 function Neighborhoods(){
 
@@ -14,6 +15,7 @@ function Neighborhoods(){
 
     return (
         <div>
+          <Navbar />
           <h2>Neighborhoods</h2>
           <ul>
             {neighborhoods.map((neighborhood) => (
