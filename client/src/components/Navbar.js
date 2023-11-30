@@ -1,6 +1,9 @@
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
+import { RxHamburgerMenu } from "react-icons/rx";
+import React, {useState} from "react"
+import HamburgerMenu from "./HamburgerMenu";
 
 function Header() {
     return (
@@ -10,7 +13,8 @@ function Header() {
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse id="basic-navbar-nav">
                     <Nav className="me-auto" style={{marginLeft: 'auto'}}>
-                        <Nav.Link className='login-link' href="/login">Login</Nav.Link>
+                        <Nav.Link></Nav.Link>
+                        <HamburgerMenu/>
                     </Nav>
                 </Navbar.Collapse>
             </Container>
