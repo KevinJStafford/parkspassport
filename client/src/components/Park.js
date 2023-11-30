@@ -1,11 +1,10 @@
 import { useEffect, useState } from "react";
-// import { useParams } from "react-router";
-import NewPark from './NewPark';
 import Navbar from './Navbar.js';
 import {Link} from "react-router-dom";
 import Search from "./SearchForm.js"
 // import DeleteButton from "./Delete.js"
 import { FaTrashCan } from "react-icons/fa6";
+
 
 function Parks(){
     const [parks, setParks] = useState([]);
@@ -58,7 +57,6 @@ function Parks(){
           ))}
         </ul>
         <hr />
-        <NewPark onAddPark={handleAddPark} />
       </div>
     );
   }

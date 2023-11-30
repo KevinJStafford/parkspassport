@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
 import Navbar from './Navbar.js';
 import {Link} from "react-router-dom";
-import NewAmenity from './NewAmenity.js'
 import Search from "./SearchForm.js"
 import { FaTrashCan } from "react-icons/fa6";
+import AddForm from './AddForm.js'
 
 function Amenities(){
     const [amenities, setAmenities] = useState([]);
@@ -56,7 +56,7 @@ function Amenities(){
           ))}
         </ul>
         <hr />
-        {/* <NewAmenity onAddAmenity={handleAddAmenity} /> */}
+        <AddForm />
       </div>
     )
 }
