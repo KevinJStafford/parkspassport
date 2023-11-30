@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import Navbar from './Navbar.js';
 import {Link} from "react-router-dom";
 import Search from "./SearchForm.js"
+import { FaTrashCan } from "react-icons/fa6";
 import AddForm from './AddForm.js'
 
 function Amenities(){
@@ -28,6 +29,16 @@ function Amenities(){
       return lowerCaseName.includes(lowerCaseSearchTerm)
     });
 
+    function handleDelete(id){
+      fetch(`/amenities/${id}`, {method: "DELETE",}).then((r) => {
+        if (r.ok) {
+          setAmenities((amenity) =>
+          amenities.filter((amenity) => amenity.id !== id)
+          );
+        }
+      }); 
+    };
+
     return (
       <div>
         <Navbar />
@@ -40,6 +51,7 @@ function Amenities(){
                 {amenity.amenity_items}
               </span>
               <Link to={`/amenities/${amenity.id}`}> View Amenity</Link>
+              <FaTrashCan onClick={() => handleDelete(amenity.id)}/>
             </li>
           ))}
         </ul>

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+// import React, { useEffect, useState } from "react";
 import {Switch, Route } from "react-router-dom";
 import LandingGrid from './LandingGrid'
 import Navbar from './Navbar'
@@ -43,5 +43,4 @@ export default App;
       // New Neighborhood
     // Park
       // New Park
-      //Search
-      //
+      // Search
