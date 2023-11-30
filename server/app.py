@@ -32,7 +32,7 @@ class Parks(Resource):
     def post(self):
         params = request.json
         try:
-            park = Park(name = params['name'], location = params['location'])
+            park = Park(name = params['name'], location = params['location'], neighborhood = params["neighborhood"], amenity = params["amenity"])
         except:
             return make_response({'errors': 'Try Again'}, 422)
         db.session.add(park)
