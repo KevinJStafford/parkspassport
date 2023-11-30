@@ -4,6 +4,8 @@ import NewPark from './NewPark';
 import Navbar from './Navbar.js';
 import {Link} from "react-router-dom";
 import Search from "./SearchForm.js"
+// import DeleteButton from "./Delete.js"
+import { FaTrashCan } from "react-icons/fa6";
 
 function Parks(){
     const [parks, setParks] = useState([]);
@@ -28,7 +30,17 @@ function Parks(){
       const lowerCaseSearchTerm = searchTerm.toLowerCase();
       return lowerCaseName.includes(lowerCaseSearchTerm)
     });
-  
+
+    function handleDelete(id){
+      fetch(`/parks/${id}`, {method: "DELETE",}).then((r) => {
+        if (r.ok) {
+          setParks((parks) =>
+          parks.filter((park) => park.id !== id)
+          );
+        }
+      }); 
+    };
+ 
     return (
       <div>
         <Navbar />
@@ -38,9 +50,10 @@ function Parks(){
           {filterParks.map((park) => (
             <li key={park.id}>
               <span>
-                {park.name}, Location {park.location}
+                {park.name}, Location {park.location} 
               </span>
               <Link to={`/parks/${park.id}`}> View Park</Link>
+              <FaTrashCan onClick={() => handleDelete(park.id)}/> 
             </li>
           ))}
         </ul>

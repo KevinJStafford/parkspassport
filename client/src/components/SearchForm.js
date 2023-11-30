@@ -11,7 +11,7 @@ function Search({searchTerm, onSearch}) {
     return (
         <div>
             <input type = "text"
-            placeholder = "Search neighborhoods..."
+            placeholder = "Search..."
             onChange = {handleSearch}
             value = {searchTerm}
             />
