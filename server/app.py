@@ -116,7 +116,7 @@ class Amenities(Resource):
     def post(self):
         params = request.json
         try:
-            new_amenity = Amenity(amenity_items = params["amenity_items"])
+            new_amenity = Amenity(amenity_items = params["amenityname"])
         except:
             return make_response({"Error" : "Try again"}, 422)
         db.session.add(new_amenity)
