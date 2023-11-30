@@ -56,7 +56,7 @@ function Amenities(){
           ))}
         </ul>
         <hr />
-        <AddForm />
+        <AddForm handleAddAmenity={handleAddAmenity}/>
       </div>
     )
 }
