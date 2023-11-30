@@ -18,6 +18,7 @@ function Amenities(){
     function handleAddAmenity(newAmenity) {
       setAmenities((amenities) => [...amenities, newAmenity]);
     }
+    
 
     function onSearch(searchString){
       setSearchTerm(searchString)

@@ -1,7 +1,8 @@
 import React from "react";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 
- const AddForm = () => {
+ const AddForm = ({handleAddAmenity}) => {
+
     return (
       <div className="form-field">
         <h1>Add An Amenity</h1>
@@ -15,8 +16,21 @@ import { Formik, Form, Field, ErrorMessage } from "formik";
             return errors;
         }}
         onSubmit={(values, {setSubmitting}) => {
+            console.log(values)
             setTimeout(() => {
-                alert(JSON.stringify(values, null, 2))
+                fetch('http://localhost:5555/amenities', {
+                    method: "POST",
+                    headers: {
+                      "Content-type": "application/json",
+                    },
+                    body: JSON.stringify(values),
+            }).then((r) => {
+                if (r.ok) {
+                    r.json().then((newAmenity) => handleAddAmenity(newAmenity))
+                } else {
+                    console.log('something went wrong')
+                }
+            })
                 setSubmitting(false)}, 400)
                 }}>
         {({ isSubmitting }) => (
