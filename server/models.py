@@ -59,8 +59,8 @@ class Park(db.Model, SerializerMixin):
     name = db.Column(db.String)
     location = db.Column(db.String)     
 
-    amenity_id = db.Column(db.ForeignKey('amenities.id'))
-    neighborhood_id = db.Column(db.ForeignKey('neighborhoods.id'))
+    amenity_id = db.Column(db.Integer, db.ForeignKey('amenities.id'))
+    neighborhood_id = db.Column(db.Integer, db.ForeignKey('neighborhoods.id'))
 
     amenity = db.relationship('Amenity', back_populates = 'parks')
     neighborhood = db.relationship('Neighborhood', back_populates = 'parks') 
