@@ -31,7 +31,7 @@ function Neighborhoods(){
     return (
         <div>
           <Navbar />
-          <h2>Neighborhoods</h2>
+          <h2>🏘️Neighborhoods👨‍👩‍👧‍👦</h2>
           <Search onSearch = {onSearch}/>
           <ul>
             {filterNeighborhoods.map((neighborhood) => (
