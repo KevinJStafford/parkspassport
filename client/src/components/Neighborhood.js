@@ -44,7 +44,6 @@ function Neighborhoods(){
             ))}
           </ul>
           <hr />
-          {/* <NewNeighborhood onAddNeighborhood={handleAddNeighborhood} /> */}
         </div>
       );
     }
