@@ -86,8 +86,6 @@ class Neighborhoods(Resource):
         return make_response(new_neighborhood.to_dict(), 201)
 api.add_resource(Neighborhoods, "/neighborhoods")
 
-
-
 class NeighborhoodById(Resource):
     def get(self, id):
         neighborhood_id = Neighborhood.query.get(id)
@@ -115,7 +113,26 @@ class Amenities(Resource):
     def get(self):
         amenities=[a.to_dict() for a in Amenity.query.all()]
         return make_response(amenities, 200)
+    def post(self):
+        params = request.json
+        try:
+            new_amenity = Amenity(amenity_items = params["amenity_items"])
+        except:
+            return make_response({"Error" : "Try again"}, 422)
+        db.session.add(new_amenity)
+        db.session.commit()
+        return make_response(new_amenity.to_dict(), 201)
 api.add_resource(Amenities, '/amenities')
+
+class AmenityById(Resource):
+    def delete(self, id):
+        amenity_id = Amenity.query.get(id)
+        if not amenity_id:
+            return make_response({"Error" : "no amenity found with that id"}, 404)
+        db.session.delete(amenity_id)
+        db.session.commit()
+        return make_response("", 204)
+api.add_resource(AmenityById, "/amenities/<int:id>")
 
 
 @app.route('/')
