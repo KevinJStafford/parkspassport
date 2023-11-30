@@ -13,18 +13,9 @@ from models import db, Park, Neighborhood, Amenity
 
 with app.app_context():
     print("Deleting data...")
-    Park.query.delete()
     Neighborhood.query.delete()
-
-    print("Creating parks...")
-    p1 = Park(name = "Jefferson County Memorial", location = "Charles Town, WV")
-    p2 = Park(name = "Sam Michaels", location = "Harpers Ferry, WV")
-    p3 = Park(name = "Caesar Creek State Park", location = "Waynesville, OH")
-    p4 = Park(name = "Fido Field", location = "Cincinatti, OH")
-    p5 = Park(name = "Slope Park Playground", location = "Brooklyn, NY")
-    p6 = Park(name = "Owl's Head Park", location = "Brooklyn, NY")
-    parks = [p1, p2, p3, p4, p5, p6]
-
+    Amenity.query.delete()
+    Park.query.delete()
 
     print("Creating neighborhoods...")
     n1 = Neighborhood(name = "Park Slope")
@@ -35,15 +26,23 @@ with app.app_context():
     n6 = Neighborhood(name = "Bay Ridge")
     neighborhoods = [n1, n2, n3, n4, n5, n6]
 
-
     print("Creating amenities...")
-    a1 = Amenity(amenity_items = "basketball court", park = p1, neighborhood = n4)
-    a2 = Amenity(amenity_items = "dog park", park = p4, neighborhood = n5)
-    a3 = Amenity(amenity_items = "hiking", park = p2, neighborhood = n2)
-    a4 = Amenity(amenity_items = "campground", park = p3, neighborhood = n3)
-    a5 = Amenity(amenity_items = "playground", park = p5, neighborhood = n1)
-    a6 = Amenity(amenity_items = "bike trail", park = p6, neighborhood = n6)
+    a1 = Amenity(amenity_items = "basketball court")
+    a2 = Amenity(amenity_items = "dog park")
+    a3 = Amenity(amenity_items = "hiking")
+    a4 = Amenity(amenity_items = "campground")
+    a5 = Amenity(amenity_items = "playground")
+    a6 = Amenity(amenity_items = "bike trail")
     amenities = [a1, a2, a3, a4, a5, a6]
+
+    print("Creating parks...")
+    p1 = Park(name = "Jefferson County Memorial", location = "Charles Town, WV", neighborhood = n4, amenity = a1)
+    p2 = Park(name = "Sam Michaels", location = "Harpers Ferry, WV", neighborhood = n2, amenity = a3)
+    p3 = Park(name = "Caesar Creek State Park", location = "Waynesville, OH", neighborhood = n3, amenity = a4)
+    p4 = Park(name = "Fido Field", location = "Cincinatti, OH", neighborhood = n5, amenity = a2)
+    p5 = Park(name = "Slope Park Playground", location = "Brooklyn, NY", neighborhood = n1, amenity = a5)
+    p6 = Park(name = "Owl's Head Park", location = "Brooklyn, NY", neighborhood = n6, amenity = a6)
+    parks = [p1, p2, p3, p4, p5, p6]
 
 
     db.session.add_all(parks)
