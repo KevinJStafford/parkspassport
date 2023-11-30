@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {useState, useEffect} from "react";
 import './HamburgerMenu.css';
 
 const HamburgerMenu = () => {
@@ -8,8 +8,24 @@ const HamburgerMenu = () => {
         setIsOpen(!isOpen);
     }
 
+    const closeMenu = () => {
+        setIsOpen(false)
+    }
+
+    useEffect(() => {
+        document.body.addEventListener('click', closeMenu);
+    
+        return () => {
+          document.body.removeEventListener('click', closeMenu);
+        };
+      }, []);
+    
+      const stopPropagation = (e) => {
+        e.stopPropagation();
+      };
+
     return (
-        <div className="hamburger-menu">
+        <div className="hamburger-menu" onClick={stopPropagation}>
           <div className={`menu-icon ${isOpen ? 'open' : ''}`} onClick={toggleMenu}>
             <div className="bar1"></div>
             <div className="bar2"></div>
