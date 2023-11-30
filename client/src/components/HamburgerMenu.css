@@ -4,6 +4,8 @@
     flex-direction: column;
     align-items: flex-end;
     padding: 10px;
+    position: relative;
+    padding: 10px
   }
   
   .menu-icon {
