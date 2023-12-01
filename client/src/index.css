@@ -39,3 +39,42 @@ img {
 .normal-text :hover {
   color: #2C7721 !important;
 }
+
+h2 {
+  padding-left: 50px;
+  background-color: #55d142;
+  color: #D7D7A8;
+  font-size: 60px;
+  font-family: 'Lilita One', sans-serif
+}
+h1 {
+  padding-left: 10px;
+  color: #1E5515;
+  font-family: 'Lilita One', sans-serif;
+  font-size: 30px;
+}
+
+input {
+  border-width: 2px;
+  border-style: ridge;
+  border-color: #55D142;
+  border-radius: 25px;
+  background-color: #D7D7A8;
+  margin-left: 10px;
+}
+
+button {
+  border-width: 2px;
+  border-style: ridge;
+  border-color: #55D142;
+  border-radius: 25px;
+  background-color: #D7D7A8
+}
+
+ul{
+  margin-top: 20px;
+  margin-left: 60px;
+  font-family: 'Lilita One', sans-serif;
+  font-size: 20px;
+  color: #1E5515;
+}
