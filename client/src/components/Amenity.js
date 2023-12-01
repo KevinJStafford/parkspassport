@@ -4,6 +4,7 @@ import {Link} from "react-router-dom";
 import Search from "./SearchForm.js"
 import { FaTrashCan } from "react-icons/fa6";
 import AddForm from './AddForm.js'
+import EditForm from "../EditForm.js";
 
 function Amenities(){
     const [amenities, setAmenities] = useState([]);
@@ -19,6 +20,9 @@ function Amenities(){
       setAmenities((amenities) => [...amenities, newAmenity]);
     }
     
+    function handleEditAmenity(editedAmenity) {
+      
+    }
 
     function onSearch(searchString){
       setSearchTerm(searchString)
