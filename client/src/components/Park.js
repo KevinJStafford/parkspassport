@@ -2,7 +2,6 @@ import { useEffect, useState } from "react";
 import Navbar from './Navbar.js';
 import {Link} from "react-router-dom";
 import Search from "./SearchForm.js"
-// import DeleteButton from "./Delete.js"
 import { FaTrashCan } from "react-icons/fa6";
 
 
