@@ -43,7 +43,7 @@ function Parks(){
     return (
       <div>
         <Navbar />
-        <h2>🏞️Parks🎠</h2>
+        <h2>Parks</h2>
         <Search onSearch = {onSearch}/>
         <ul>
           {filterParks.map((park) => (

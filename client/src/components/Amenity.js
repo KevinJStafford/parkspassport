@@ -43,7 +43,7 @@ function Amenities(){
     return (
       <div>
         <Navbar />
-        <h2>🛝Amenities🐕</h2>
+        <h2>Amenities</h2>
         <Search onSearch = {onSearch}/>
         <ul>
           {filterAmenities.map((amenity) => (
