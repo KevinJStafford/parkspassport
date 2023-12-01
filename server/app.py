@@ -1,7 +1,5 @@
 #!/usr/bin/env python3
 
-# Standard library imports
-
 # Remote library imports
 from models import Park, Amenity, Neighborhood
 from flask_migrate import Migrate
@@ -11,8 +9,9 @@ import os
 
 # Local imports
 from config import app, db, api
-# Add your model imports
+# There are a few routes that are not used in MVP that we plan to use for future enhancements. Marking those with a comment called "Not in MVP"
 
+# Not used in MVP
 class ParksInNeighborhood(Resource):
     def get(self, id):
         neighborhood_id = Neighborhood.query.get(id)
@@ -23,12 +22,14 @@ class ParksInNeighborhood(Resource):
         return make_response(parks_data, 200)
     
 api.add_resource(ParksInNeighborhood, '/neighborhoods/<int:id>/parks')
-    
+
+
 class Parks(Resource):
     def get(self):
         parks = [park.to_dict() for park in Park.query.all()]
         return make_response(parks, 200)
-    
+
+ # Not used in MVP   
     def post(self):
         params = request.json
         try:
@@ -41,6 +42,7 @@ class Parks(Resource):
 
 api.add_resource(Parks, '/parks')
 
+# Not used in MVP
 class ParkAmenities(Resource):
     def patch(self, id):
         park_amenity = Park.query.get(id).amenity_items
@@ -57,6 +59,7 @@ class ParkAmenities(Resource):
     
 api.add_resource(ParkAmenities, '/parks/<int:id>/amenities')
 
+# Not used in MVP
 class ParksById(Resource):
     def delete(self, id):
         park = Park.query.get(id)
@@ -68,6 +71,7 @@ class ParksById(Resource):
     
 api.add_resource(ParksById, '/parks/<int:id>')
 
+
 class Neighborhoods(Resource):
     def get(self):
         neighborhoods = [n.to_dict() for n in Neighborhood.query.all()]
@@ -75,6 +79,8 @@ class Neighborhoods(Resource):
             return make_response({"Error" : "No neighborhoods found."}, 404)
         else:
             return make_response(neighborhoods, 200)
+        
+ # Not used in MVP    
     def post(self):
         params = request.json
         try:
@@ -86,6 +92,7 @@ class Neighborhoods(Resource):
         return make_response(new_neighborhood.to_dict(), 201)
 api.add_resource(Neighborhoods, "/neighborhoods")
 
+# Not used in MVP
 class NeighborhoodById(Resource):
     def get(self, id):
         neighborhood_id = Neighborhood.query.get(id)
@@ -93,7 +100,7 @@ class NeighborhoodById(Resource):
             return make_response({"Error" : "No neighborhoods with that id"}, 404)
         else:
             return make_response(neighborhood_id.to_dict(), 200)
-    
+# Not used in MVP    
     def delete(self, id):
         neighborhood_id = Neighborhood.query.get(id)
         if not neighborhood_id:
@@ -103,11 +110,13 @@ class NeighborhoodById(Resource):
         return make_response("", 204)
 api.add_resource(NeighborhoodById, "/neighborhoods/<int:id>")
 
+# Not used in MVP
 class NeighborhoodAmenities(Resource):
     def get(self):
         neighborhood_amenities = [n.to_dict() for n in Neighborhood.query.all().amenities]
         return make_response(neighborhood_amenities, 200)
 api.add_resource(NeighborhoodAmenities, "/neighborhoods/<int:id>/amenities")
+
 
 class Amenities(Resource):
     def get(self):

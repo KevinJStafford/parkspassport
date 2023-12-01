@@ -39,7 +39,7 @@ function Neighborhoods(){
                 <span>
                   {neighborhood.name}
                 </span>
-                <Link to={`/neighborhoods/${neighborhood.id}`}>  View Neighborhood</Link>
+                {/* <Link to={`/neighborhoods/${neighborhood.id}`}>  View Neighborhood</Link> */}
               </li>
             ))}
           </ul>
