@@ -51,7 +51,7 @@ function Amenities(){
               <span>
                 {amenity.amenity_items}
               </span>
-              <Link to={`/amenities/${amenity.id}`}> View Amenity</Link>
+              {/* <Link to={`/amenities/${amenity.id}`}> View Amenity</Link> */}
               <FaTrashCan onClick={() => handleDelete(amenity.id)}/>
             </li>
           ))}

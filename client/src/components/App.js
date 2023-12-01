@@ -30,17 +30,3 @@ function App() {
 }
 
 export default App;
-
-
-//App hierarchy
-
-// APP
-  // Navbar
-    // LandingGrid
-    // Amenity
-      //New Amenity
-    // Neighborhood
-      // New Neighborhood
-    // Park
-      // New Park
-      // Search
