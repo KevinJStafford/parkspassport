@@ -132,6 +132,17 @@ class AmenityById(Resource):
         db.session.delete(amenity_id)
         db.session.commit()
         return make_response("", 204)
+    
+    def patch(self,id):
+        amenity = Amenity.query.get(id)
+        if not amenity:
+            return make_response({"Error" : "no amenity found with that id"}, 404)
+        params = request.json
+        for attr in params:
+            setattr(amenity, attr, params[attr])
+        db.session.commit()
+        return make_response(amenity.to_dict(), 200)
+
 api.add_resource(AmenityById, "/amenities/<int:id>")
 
 
